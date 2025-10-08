@@ -1520,7 +1520,8 @@
                             <input type="text" id="name" name="name" class="form-input" placeholder="Ім'я та прізвище" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="Телефон" required>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="380501234567" required>
+                            <small style="color: var(--color-text-secondary); font-size: 0.8rem; margin-top: 4px; display: block;">Формат: 380XXXXXXXXX (без +)</small>
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" name="email" class="form-input" placeholder="Email" required>
@@ -1746,6 +1747,48 @@
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 
                 if (email && !emailRegex.test(email)) {
+                    this.style.borderColor = '#ff6b6b';
+                    this.style.boxShadow = '0 0 0 2px rgba(255, 107, 107, 0.2)';
+                } else {
+                    this.style.borderColor = '';
+                    this.style.boxShadow = '';
+                }
+            });
+        }
+        
+        // --- Phone Validation ---
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function() {
+                // Видаляємо всі нецифрові символи
+                let value = this.value.replace(/\D/g, '');
+                
+                // Якщо починається з 0, замінюємо на 380
+                if (value.startsWith('0')) {
+                    value = '380' + value.substring(1);
+                }
+                
+                // Якщо починається з 38, залишаємо як є
+                if (value.startsWith('38')) {
+                    // Нічого не робимо
+                } else if (value.length > 0) {
+                    // Якщо не починається з 38, додаємо 380
+                    value = '380' + value;
+                }
+                
+                // Обмежуємо до 12 цифр (380 + 9 цифр)
+                if (value.length > 12) {
+                    value = value.substring(0, 12);
+                }
+                
+                this.value = value;
+            });
+            
+            phoneInput.addEventListener('blur', function() {
+                const phone = this.value;
+                const phoneRegex = /^380\d{9}$/;
+                
+                if (phone && !phoneRegex.test(phone)) {
                     this.style.borderColor = '#ff6b6b';
                     this.style.boxShadow = '0 0 0 2px rgba(255, 107, 107, 0.2)';
                 } else {
