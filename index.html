@@ -1520,8 +1520,8 @@
                             <input type="text" id="name" name="name" class="form-input" placeholder="Ім'я та прізвище" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="380501234567" required>
-                            <small style="color: var(--color-text-secondary); font-size: 0.8rem; margin-top: 4px; display: block;">Формат: 380XXXXXXXXX (без +)</small>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+380501234567" required>
+                            <small style="color: var(--color-text-secondary); font-size: 0.8rem; margin-top: 4px; display: block;">Формат: +380501234567 або 380501234567</small>
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" name="email" class="form-input" placeholder="Email" required>
@@ -1760,33 +1760,40 @@
         const phoneInput = document.getElementById('phone');
         if (phoneInput) {
             phoneInput.addEventListener('input', function() {
-                // Видаляємо всі нецифрові символи
-                let value = this.value.replace(/\D/g, '');
+                let value = this.value;
                 
-                // Якщо починається з 0, замінюємо на 380
-                if (value.startsWith('0')) {
-                    value = '380' + value.substring(1);
-                }
+                // Дозволяємо тільки цифри, +, пробіли, дужки та тире
+                value = value.replace(/[^\d\+\s\(\)\-]/g, '');
                 
-                // Якщо починається з 38, залишаємо як є
-                if (value.startsWith('38')) {
-                    // Нічого не робимо
-                } else if (value.length > 0) {
-                    // Якщо не починається з 38, додаємо 380
-                    value = '380' + value;
-                }
-                
-                // Обмежуємо до 12 цифр (380 + 9 цифр)
-                if (value.length > 12) {
-                    value = value.substring(0, 12);
+                // Автоматично додаємо + якщо користувач почав вводити номер
+                if (value.length > 0 && !value.startsWith('+')) {
+                    // Якщо починається з 0, замінюємо на +380
+                    if (value.startsWith('0')) {
+                        value = '+380' + value.substring(1);
+                    }
+                    // Якщо починається з 38, додаємо +
+                    else if (value.startsWith('38')) {
+                        value = '+' + value;
+                    }
+                    // Якщо починається з 3, додаємо +38
+                    else if (value.startsWith('3')) {
+                        value = '+38' + value;
+                    }
+                    // Інакше додаємо +
+                    else if (value.length > 0) {
+                        value = '+' + value;
+                    }
                 }
                 
                 this.value = value;
             });
             
             phoneInput.addEventListener('blur', function() {
-                const phone = this.value;
-                const phoneRegex = /^380\d{9}$/;
+                const phone = this.value.trim();
+                
+                // Універсальна валідація телефону
+                // Дозволяємо формати: +380XXXXXXXXX, +1234567890, +44123456789 тощо
+                const phoneRegex = /^\+\d{10,15}$/;
                 
                 if (phone && !phoneRegex.test(phone)) {
                     this.style.borderColor = '#ff6b6b';
