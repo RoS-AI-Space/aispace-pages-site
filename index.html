@@ -3,15 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Власний AI-асистент замість стандартних рішень</title>
     
-    <!-- Fonts -->
+    <!-- SEO Meta Tags -->
+    <title>Власний AI-асистент замість стандартних рішень | AISPACE</title>
+    <meta name="description" content="Не адаптуйте процеси під AI — ми адаптуємо AI під ваші процеси. Один платіж — і технологія назавжди ваша. Власний AI-асистент для EdTech, кол-центрів та відділів продажів.">
+    <meta name="keywords" content="AI асистент, власний AI, AI для бізнесу, EdTech AI, кол-центр AI, AI аналіз, AI система, AI впровадження, AI консультація, AISPACE">
+    <meta name="author" content="AISPACE">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="uk">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Власний AI-асистент замість стандартних рішень | AISPACE">
+    <meta property="og:description" content="Не адаптуйте процеси під AI — ми адаптуємо AI під ваші процеси. Один платіж — і технологія назавжди ваша.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aispace.com">
+    <meta property="og:image" content="https://aispace.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="AISPACE">
+    <meta property="og:locale" content="uk_UA">
+    
+    <!-- LinkedIn Meta Tags -->
+    <meta property="linkedin:title" content="Власний AI-асистент замість стандартних рішень | AISPACE">
+    <meta property="linkedin:description" content="Не адаптуйте процеси під AI — ми адаптуємо AI під ваші процеси. Один платіж — і технологія назавжди ваша.">
+    <meta property="linkedin:image" content="https://aispace.com/linkedin-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://aispace.com">
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
                 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AISPACE",
+        "url": "https://aispace.com",
+        "logo": "https://aispace.com/logo.png",
+        "description": "Не адаптуйте процеси під AI — ми адаптуємо AI під ваші процеси. Один платіж — і технологія назавжди ваша.",
+        "foundingDate": "2024",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+380-XX-XXX-XX-XX",
+            "contactType": "customer service",
+            "availableLanguage": "Ukrainian"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/roman-smirnov-aispace/"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "UA"
+        },
+        "offers": {
+            "@type": "Offer",
+            "name": "Власний AI-асистент",
+            "description": "AI-асистент для EdTech, кол-центрів та відділів продажів",
+            "category": "AI Services"
+        }
+    }
+    </script>
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#00D4FF">
+    <meta name="msapplication-TileColor" content="#0A0F1E">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 
     <style>
         :root {
@@ -1268,8 +1347,8 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero" id="hero">
-            <div id="hero-canvas"></div>
+        <section class="hero" id="hero" role="banner">
+            <div id="hero-canvas" aria-hidden="true"></div>
             <div class="hero-content">
                 <h1 class="hero-title">Власний <span class="gradient-text">AI&#8209;АСИСТЕНТ</span> замість стандартних рішень</h1>
                 <p class="hero-subtitle">
@@ -1277,14 +1356,14 @@
                     <br>
                     Один платіж — і технологія назавжди ваша.
                 </p>
-                <a href="#cta" class="btn btn-primary">Дізнатися вартість впровадження</a>
+                <a href="#cta" class="btn btn-primary" aria-label="Дізнатися вартість впровадження AI-системи">Дізнатися вартість впровадження</a>
             </div>
         </section>
 
         <!-- Target Audience Section -->
-        <section class="target-audience" id="solutions">
+        <section class="target-audience" id="solutions" role="region" aria-labelledby="solutions-title">
             <div class="container">
-                <h2 class="section-title">Для кого це?</h2>
+                <h2 class="section-title" id="solutions-title">Для кого це?</h2>
                 <div class="tabs-container">
                     <div class="tab-buttons">
                         <button class="tab-btn active" data-tab="1"><i class="fas fa-graduation-cap"></i> EdTech</button>
@@ -1511,8 +1590,7 @@
                 <div class="footer-col">
                      <h4 class="footer-col__title">Соцмережі</h4>
                      <ul class="footer-nav">
-                        <li><a href="#" class="footer-link">LinkedIn</a></li>
-                        <li><a href="#" class="footer-link">Twitter</a></li>
+                        <li><a href="https://www.linkedin.com/in/roman-smirnov-aispace/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                      </ul>
                 </div>
             </div>
@@ -1828,6 +1906,70 @@
         });
 
     });
+    </script>
+
+    <!-- Google Analytics (replace with your tracking ID) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script> -->
+
+    <!-- Additional SEO and Performance Scripts -->
+    <script>
+        // Lazy loading for images (if any are added later)
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            if ('performance' in window) {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+            }
+        });
+    </script>
+
+    <!-- Schema.org structured data for FAQ (if needed) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Що таке власний AI-асистент?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Власний AI-асистент - це індивідуальна AI-система, яка адаптується під ваші бізнес-процеси та стає вашою власністю після впровадження."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "Для яких сфер підходить AI-асистент?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AI-асистент підходить для EdTech, кол-центрів та відділів продажів, допомагаючи підвищувати якість роботи та ефективність команд."
+                }
+            }
+        ]
+    }
     </script>
 </body>
 </html>
