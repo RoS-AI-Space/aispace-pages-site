@@ -1778,12 +1778,16 @@
                     if (value.startsWith('0')) {
                         value = '+380' + value.substring(1);
                     }
-                    // Якщо починається з 38, додаємо +
-                    else if (value.startsWith('38')) {
+                    // Якщо починається з 380, додаємо +
+                    else if (value.startsWith('380')) {
+                        value = '+' + value;
+                    }
+                    // Якщо починається з 38, додаємо + (але не +38)
+                    else if (value.startsWith('38') && value.length > 2) {
                         value = '+' + value;
                     }
                     // Якщо починається з 3, додаємо +38
-                    else if (value.startsWith('3')) {
+                    else if (value.startsWith('3') && value.length > 1) {
                         value = '+38' + value;
                     }
                     // Інакше додаємо +
