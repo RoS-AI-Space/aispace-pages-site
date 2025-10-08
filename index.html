@@ -1551,6 +1551,9 @@
                     </form>
                      <div id="form-success-msg">
                         <p><strong>Дякуємо!</strong> Ваша заявка успішно відправлена. Ми зв'яжемося з вами найближчим часом.</p>
+                        <button type="button" class="btn btn-secondary" onclick="resetForm()" style="margin-top: 16px;">
+                            Відправити ще одну заявку
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1666,16 +1669,110 @@
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('form-success-msg');
         
+        // Замініть на URL вашого Google Apps Script веб-додатку
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwz4bW1pvWkqW2YZhY3dChnEekOe-PPY2KT8OiKRNtMVKQhOIuHLHa6-GFksYN3oc77Uw/exec';
+        
         if(contactForm) {
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                // Here you would typically send data to a server
-                // For demo purposes, we'll just show the success message
-                contactForm.style.display = 'none';
-                successMessage.style.display = 'block';
+                
+                // Показуємо індикатор завантаження
+                const submitBtn = contactForm.querySelector('.btn-submit');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Відправка...';
+                submitBtn.disabled = true;
+                
+                try {
+                    // Збираємо дані з форми
+                    const formData = {
+                        fullName: document.getElementById('name').value,
+                        phone: document.getElementById('phone').value,
+                        email: document.getElementById('email').value,
+                        company: document.getElementById('company').value,
+                        industry: document.getElementById('industry-input').value,
+                        comment: document.getElementById('message').value
+                    };
+                    
+                    // Валідація обов'язкових полів
+                    if (!formData.fullName || !formData.email) {
+                        throw new Error('Ім\'я та email є обов\'язковими полями');
+                    }
+                    
+                    // Відправляємо дані на Google Apps Script
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        // Показуємо повідомлення про успіх
+                        contactForm.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        successMessage.innerHTML = '<p><strong>Дякуємо!</strong> Ваша заявка успішно відправлена. Ми зв\'яжемося з вами найближчим часом.</p>';
+                    } else {
+                        throw new Error(result.message || 'Помилка при відправці форми');
+                    }
+                    
+                } catch (error) {
+                    console.error('Помилка:', error);
+                    // Показуємо повідомлення про помилку
+                    successMessage.style.display = 'block';
+                    successMessage.innerHTML = `<p style="color: #ff6b6b;"><strong>Помилка:</strong> ${error.message}</p>`;
+                } finally {
+                    // Відновлюємо кнопку
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
             });
         }
-
+        
+        // --- Email Validation ---
+        const emailInput = document.getElementById('email');
+        if (emailInput) {
+            emailInput.addEventListener('blur', function() {
+                const email = this.value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (email && !emailRegex.test(email)) {
+                    this.style.borderColor = '#ff6b6b';
+                    this.style.boxShadow = '0 0 0 2px rgba(255, 107, 107, 0.2)';
+                } else {
+                    this.style.borderColor = '';
+                    this.style.boxShadow = '';
+                }
+            });
+        }
+        
+        // --- Form Reset after Success ---
+        function resetForm() {
+            if (contactForm) {
+                contactForm.reset();
+                contactForm.style.display = 'grid';
+                successMessage.style.display = 'none';
+                
+                // Скидаємо стилі валідації
+                const inputs = contactForm.querySelectorAll('.form-input');
+                inputs.forEach(input => {
+                    input.style.borderColor = '';
+                    input.style.boxShadow = '';
+                });
+            }
+        }
+        
+        // Додаємо кнопку "Відправити ще одну заявку" після успішної відправки
+        if (successMessage) {
+            successMessage.addEventListener('click', function() {
+                if (this.style.display === 'block') {
+                    resetForm();
+                }
+            });
+        }
+        
         // --- Three.js Hero Background ---
         const heroCanvasContainer = document.getElementById('hero-canvas');
         if (heroCanvasContainer) {
