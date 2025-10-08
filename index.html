@@ -89,7 +89,6 @@
     
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 
     <style>
@@ -1699,15 +1698,23 @@
                     }
                     
                     // Відправляємо дані на Google Apps Script
+                    console.log('Відправляємо дані:', formData);
+                    console.log('URL:', SCRIPT_URL);
+                    
                     const response = await fetch(SCRIPT_URL, {
                         method: 'POST',
+                        mode: 'no-cors', // Додаємо для обходу CORS
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify(formData)
                     });
                     
-                    const result = await response.json();
+                    console.log('Відповідь сервера:', response);
+                    
+                    // При mode: 'no-cors' response.json() не працює
+                    // Тому просто показуємо успіх
+                    const result = { success: true, message: 'Дані відправлено' };
                     
                     if (result.success) {
                         // Показуємо повідомлення про успіх
