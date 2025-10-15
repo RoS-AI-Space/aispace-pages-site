@@ -640,6 +640,84 @@
             font-size: 0.9rem;
         }
 
+        /* --- Metrics Section --- */
+        .metrics {
+            background-color: var(--color-bg);
+        }
+
+        .metrics-subtitle {
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            font-style: italic;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .metric-card {
+            background-color: var(--color-bg-secondary);
+            border: 1px solid var(--color-bg-tertiary);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-main);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .metric-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .metric-value {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .metric-title {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .metric-description {
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
         /* --- Solutions Section --- */
         .solutions-grid {
             display: grid;
@@ -1161,6 +1239,7 @@
             .mobile-menu-toggle { display: flex; }
             .bento-grid { grid-template-columns: 1fr 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            .metrics-grid { grid-template-columns: 1fr 1fr; }
 
             .header-container {
                 justify-content: space-between;
@@ -1225,6 +1304,7 @@
             .cta-title { font-size: 1.8rem; }
             .solutions-grid { grid-template-columns: 1fr; }
             .bento-grid { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: 1fr; }
             .bento-item--large, .bento-item--tall, .bento-item--wide {
                 grid-column: span 1;
                 grid-row: span 1;
@@ -1271,6 +1351,8 @@
             }
             
             .cta-title { font-size: 1.3rem; }
+            .metric-value { font-size: 2.5rem; }
+            .metric-card { padding: 24px; }
             .scroll-to-top {
                 width: 50px;
                 height: 50px;
@@ -1431,6 +1513,46 @@
                             <span class="tech-tag">Gemini</span>
                             <span class="tech-tag">BigQuery</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metrics Section -->
+        <section class="metrics" id="metrics">
+            <div class="container">
+                <h2 class="section-title">Ключові метрики ефективності</h2>
+                <p class="metrics-subtitle">на прикладі аналізу уроків - 10 в день по 50-60 хв кожний</p>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3 class="metric-title">Точність AI-аналізу</h3>
+                        <div class="metric-value">>95%</div>
+                        <p class="metric-description">результатів аналізу проходять експертну перевірку та повністю відповідають Вашим стандартизованим критеріям, що гарантує стабільну якість рішень.</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">ROI за 3 роки</h3>
+                        <div class="metric-value">510%</div>
+                        <p class="metric-description">Це не просто технологія — це фінансовий результат, що значно випереджає індустрійні норми.</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">Економія витрат</h3>
+                        <div class="metric-value">82%</div>
+                        <p class="metric-description">дозволяє швидко повернути вкладення і спрямувати ресурси на інновації та розвиток.</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">Продуктивність</h3>
+                        <div class="metric-value">+325 годин/міс</div>
+                        <p class="metric-description">можна сфокусувати на розвиток замість рутини.</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">Окупність</h3>
+                        <div class="metric-value">6 місяців</div>
+                        <p class="metric-description">Показник у 2-4 рази кращий за галузеві стандарти для B2B автоматизації.</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">Впровадження</h3>
+                        <div class="metric-value">2-4 тижні</div>
+                        <p class="metric-description">після надання чек-листу під ваші процеси – ви дуже швидко отримуєте систему та конкурентну перевагу.</p>
                     </div>
                 </div>
             </div>
