@@ -1297,12 +1297,84 @@
             }
         }
 
-        @media (max-width: 768px) {
-            section {
-                padding: 60px 0;
+        /* Tablets (iPad and similar) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            body {
+                padding-top: 90px;
             }
-            
-            .hero-title { font-size: 2.5rem; }
+
+            .hero {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .container {
+                padding: 0 40px;
+            }
+
+            .hero-content {
+                padding: 0 40px;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+                margin-bottom: 32px;
+            }
+
+            .key-message {
+                margin-top: 40px;
+                margin-bottom: 24px;
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+            .section-title { font-size: 2.25rem; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Mobile devices */
+        @media (max-width: 767px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .hero {
+                height: 100vh;
+                min-height: auto;
+                align-items: center;
+                padding-top: 0;
+                padding-bottom: 20px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero-content {
+                padding: 0 20px;
+                max-width: 100%;
+            }
+
+            .key-message {
+                margin-top: 0;
+                margin-bottom: 20px;
+                padding: 14px 18px;
+            }
+
+            .hero-title { 
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+            .hero-subtitle {
+                margin-bottom: 42px;
+            }
             .section-title { font-size: 2rem; }
             .cta-title { font-size: 1.8rem; }
             .solutions-grid { grid-template-columns: 1fr; }
@@ -1325,11 +1397,6 @@
             .logo {
                 font-size: 1.25rem;
             }
-
-            .key-message {
-                margin: 20px 16px;
-                padding: 16px 20px;
-            }
         }
 
         @media (max-width: 550px) {
@@ -1349,8 +1416,41 @@
         }
 
         @media (max-width: 480px) {
+            body {
+                padding-top: 65px;
+            }
+
             section {
-                padding: 40px 0;
+                padding: 35px 0;
+            }
+
+            .container {
+                padding: 0 18px;
+            }
+
+            .hero-content {
+                padding: 0 18px;
+                max-width: 100%;
+            }
+
+            .key-message {
+                margin-top: 0;
+                margin-bottom: 18px;
+                padding: 12px 16px;
+            }
+
+            .hero-title {
+                margin-bottom: 18px;
+            }
+
+            .hero-subtitle {
+                margin-bottom: 38px;
+            }
+
+            .btn-primary {
+                font-size: 0.9rem;
+                padding: 13px 22px;
+                max-width: 100%;
             }
             
             .cta-title { font-size: 1.3rem; }
@@ -1375,11 +1475,206 @@
 
             .header .container {
                 gap: 12px;
-                padding: 0 16px;
+                padding: 0 18px;
+            }
+        }
+
+        /* iPhone 5/SE and very small screens */
+        @media (max-width: 360px) {
+            body {
+                padding-top: 60px;
+            }
+
+            .header {
+                padding: 16px 0;
+            }
+
+            .header.scrolled {
+                padding: 10px 0;
             }
 
             .container {
-                padding: 0 16px;
+                padding: 0 15px;
+            }
+
+            .hero-content {
+                padding: 0 15px;
+                max-width: 100%;
+            }
+
+            .header .container {
+                padding: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 1.85rem;
+                margin-bottom: 18px;
+                line-height: 1.15;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 32px;
+                line-height: 1.5;
+            }
+
+            .key-message {
+                font-size: 1.15rem;
+                padding: 10px 14px;
+                line-height: 1.4;
+                margin-top: 0;
+                margin-bottom: 14px;
+            }
+
+            .btn-primary {
+                font-size: 0.85rem;
+                padding: 12px 20px;
+                white-space: normal;
+                line-height: 1.3;
+                max-width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+                margin-bottom: 40px;
+            }
+
+            .tab-btn {
+                font-size: 0.95rem;
+                padding: 12px 20px;
+            }
+
+            .bento-item {
+                padding: 20px;
+            }
+
+            .bento-item__title {
+                font-size: 1.3rem;
+            }
+
+            .solution-card__title {
+                font-size: 1.5rem;
+            }
+
+            .timeline-item__number {
+                width: 70px;
+                height: 70px;
+                font-size: 1.5rem;
+            }
+
+            .timeline-item__title {
+                font-size: 1.3rem;
+            }
+
+            section {
+                padding: 30px 0;
+            }
+        }
+
+        /* Height-based adjustments for mobile devices */
+        @media (max-width: 767px) and (min-height: 901px) {
+            .hero {
+                height: 100vh;
+                min-height: auto;
+                padding-top: 0;
+                padding-bottom: 40px;
+                justify-content: center;
+            }
+
+            .hero-subtitle {
+                margin-bottom: 48px;
+            }
+
+            .key-message {
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 767px) and (max-height: 900px) {
+            .hero {
+                height: 100vh;
+                min-height: auto;
+                padding-top: 0;
+                padding-bottom: 20px;
+                justify-content: center;
+            }
+
+            .hero-title {
+                margin-bottom: 16px;
+            }
+
+            .hero-subtitle {
+                margin-bottom: 38px;
+            }
+
+            .key-message {
+                margin-top: 0;
+                margin-bottom: 18px;
+                padding: 12px 16px;
+            }
+
+            .btn-primary {
+                margin-top: 16px;
+            }
+        }
+
+        @media (max-width: 767px) and (max-height: 800px) {
+            .hero {
+                padding-top: 0;
+                padding-bottom: 15px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem !important;
+                margin-bottom: 14px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.15rem;
+                margin-bottom: 32px;
+            }
+
+            .key-message {
+                font-size: 1.2rem;
+                margin-top: 0;
+                margin-bottom: 16px;
+                padding: 10px 14px;
+            }
+
+            .btn-primary {
+                font-size: 0.9rem;
+                padding: 11px 20px;
+                margin-top: 14px;
+            }
+        }
+
+        @media (max-width: 767px) and (max-height: 700px) {
+            .hero {
+                padding-top: 0;
+                padding-bottom: 10px;
+            }
+
+            .hero-title {
+                font-size: 1.9rem !important;
+                margin-bottom: 12px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 28px;
+            }
+
+            .key-message {
+                font-size: 1.1rem;
+                margin-top: 0;
+                margin-bottom: 12px;
+                padding: 10px 14px;
+            }
+
+            .btn-primary {
+                font-size: 0.85rem;
+                padding: 10px 18px;
+                margin-top: 12px;
             }
         }
 
