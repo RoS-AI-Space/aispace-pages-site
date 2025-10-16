@@ -423,6 +423,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding-top: 20px;
         }
 
         #hero-canvas {
@@ -447,8 +448,12 @@
             font-weight: 800;
             color: #fff;
             margin-bottom: 36px;
-            line-height: 1.1;
+            line-height: 1.3;
             text-align: center;
+            word-break: keep-all;
+            overflow-wrap: normal;
+            hyphens: none;
+            white-space: pre-line;
         }
 
         .hero-subtitle {
@@ -495,7 +500,7 @@
                 text-align: center !important;
                 position: relative !important;
                 overflow: visible !important;
-                padding: 90px 20px 20px 20px !important;
+                padding: 110px 20px 20px 20px !important;
                 box-sizing: border-box !important;
             }
             
@@ -511,11 +516,16 @@
             }
             
             .hero-title {
-                font-size: clamp(2.5rem, 4vw, 3.5rem) !important;
-                margin-bottom: 0 !important;
-                margin-top: 0 !important;
+                font-size: clamp(5rem, 10vw, 8rem) !important;
+                white-space: normal !important;
+                line-height: 1.3 !important;
                 text-align: center !important;
+                max-width: 100% !important;
+                word-break: keep-all !important;
+                overflow-wrap: normal !important;
+                hyphens: none !important;
             }
+            
             
             .hero-subtitle {
                 font-size: clamp(1.1rem, 2.5vw, 1.6rem) !important;
@@ -1428,7 +1438,7 @@
                 text-align: center !important;
                 position: relative !important;
                 overflow: hidden !important;
-                padding-top: 100px !important;
+                padding-top: 30px !important;
                 box-sizing: border-box !important;
             }
 
@@ -1451,8 +1461,11 @@
             .hero-title {
                 font-size: clamp(4.5rem, 8vw, 6.5rem) !important;
                 white-space: pre-line !important;
-                line-height: 1.1 !important;
+                line-height: 1.2 !important;
                 text-align: center !important;
+                word-break: keep-all !important;
+                overflow-wrap: normal !important;
+                hyphens: none !important;
             }
 
             .key-message {
@@ -2158,46 +2171,171 @@
             }
         }
         
-        /* Small screens (iPhone 5/SE) - slightly smaller title font */
-        @media (max-width: 399px) {
+        /* Ultra small screens (iPhone 5/SE) - 5 lines, maximum font */
+        @media (max-width: 360px) {
+            .hero {
+                padding-top: 50px !important;
+                padding-bottom: 20px !important;
+                box-sizing: border-box !important;
+            }
+            .hero-content {
+                gap: 12px !important;
+                padding: 0 !important;
+            }
             .hero-title {
                 font-size: clamp(2.0rem, 6vw, 2.8rem) !important;
                 white-space: pre-line !important;
-                line-height: 1.0 !important;
+                line-height: 1.2 !important;
                 text-align: center !important;
+                word-break: keep-all !important;
+                overflow-wrap: normal !important;
+                hyphens: none !important;
+                margin: 0 !important;
+            }
+            .key-message {
+                font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
+                padding: 8px 12px !important;
+                margin: 0 !important;
+            }
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
+                margin: 0 !important;
+            }
+            .btn-primary {
+                font-size: clamp(0.8rem, 2vw, 1rem) !important;
+                padding: 10px 16px !important;
+                margin: 0 !important;
             }
         }
         
-        /* Mobile screens 400px+ - 5-line title */
+        /* Small screens (iPhone 6/7/8) - 4 lines, maximum font */
+        @media (min-width: 361px) and (max-width: 399px) {
+            .hero {
+                padding-top: 40px !important;
+                padding-bottom: 15px !important;
+                box-sizing: border-box !important;
+            }
+            .hero-content {
+                gap: 15px !important;
+                padding: 0 !important;
+            }
+            .hero-title {
+                font-size: clamp(2.2rem, 6.5vw, 3.2rem) !important;
+                white-space: pre-line !important;
+                line-height: 1.2 !important;
+                text-align: center !important;
+                word-break: keep-all !important;
+                overflow-wrap: normal !important;
+                hyphens: none !important;
+                margin: 0 !important;
+            }
+            .key-message {
+                font-size: clamp(1.0rem, 2.8vw, 1.2rem) !important;
+                padding: 10px 14px !important;
+                margin: 0 !important;
+            }
+            .hero-subtitle {
+                font-size: clamp(1.0rem, 2.8vw, 1.2rem) !important;
+                margin: 0 !important;
+            }
+            .btn-primary {
+                font-size: clamp(0.9rem, 2.2vw, 1.1rem) !important;
+                padding: 12px 18px !important;
+                margin: 0 !important;
+            }
+        }
+        
+        /* Medium screens (iPhone 12 Pro) - 3 lines, maximum font */
         @media (min-width: 400px) and (max-width: 767px) {
+            .hero {
+                padding-top: 20px !important;
+            }
             .hero-title {
-                font-size: clamp(3.5rem, 9vw, 5.8rem) !important;
+                font-size: clamp(2.8rem, 7vw, 4.5rem) !important;
                 white-space: pre-line !important;
-                line-height: 0.9 !important;
+                line-height: 1.2 !important;
                 text-align: center !important;
+                word-break: keep-all !important;
+                overflow-wrap: normal !important;
+                hyphens: none !important;
             }
         }
         
-        /* Portrait orientation - 3-line title */
-        @media (max-width: 767px) and (orientation: portrait) {
-            .hero-title {
-                white-space: pre-line !important;
-                font-size: clamp(2.0rem, 6vw, 2.8rem) !important;
-                line-height: 1.0 !important;
-                text-align: center !important;
-            }
-        }
-        
-        /* Landscape orientation - adaptive title (2-3 lines) */
+        /* Landscape mobile - 2 lines, maximum font */
         @media (max-width: 767px) and (orientation: landscape) {
+            .hero {
+                height: 100dvh !important;
+                padding: 10px 15px !important;
+                box-sizing: border-box !important;
+                overflow: hidden !important;
+            }
+            .hero-content {
+                gap: 8px !important;
+                padding: 0 !important;
+            }
             .hero-title {
-                font-size: clamp(2.5rem, 8vw, 4.5rem) !important;
+                font-size: clamp(1.8rem, 6vw, 3rem) !important;
+                white-space: normal !important;
+                line-height: 1.3 !important;
+                text-align: center !important;
+                max-width: 100% !important;
+                word-break: keep-all !important;
+                overflow-wrap: normal !important;
+                hyphens: none !important;
+                margin: 0 !important;
+            }
+            .key-message {
+                font-size: clamp(0.9rem, 2.5vw, 1.2rem) !important;
+                padding: 8px 12px !important;
+                margin: 0 !important;
+            }
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 2.5vw, 1.2rem) !important;
+                margin: 0 !important;
+            }
+            .btn-primary {
+                font-size: clamp(0.8rem, 2vw, 1rem) !important;
+                padding: 8px 16px !important;
+                margin: 0 !important;
+            }
+        }
+        
+        /* Very low landscape screens - ultra compact */
+        @media (max-width: 767px) and (orientation: landscape) and (max-height: 500px) {
+            .hero {
+                height: 100dvh !important;
+                padding: 5px 10px !important;
+                box-sizing: border-box !important;
+                overflow: hidden !important;
+            }
+            .hero-content {
+                gap: 4px !important;
+                padding: 0 !important;
+            }
+            .hero-title {
+                font-size: clamp(1.4rem, 5vw, 2.2rem) !important;
                 white-space: normal !important;
                 line-height: 1.2 !important;
                 text-align: center !important;
                 max-width: 100% !important;
-                word-wrap: break-word !important;
-                overflow-wrap: break-word !important;
+                word-break: keep-all !important;
+                overflow-wrap: normal !important;
+                hyphens: none !important;
+                margin: 0 !important;
+            }
+            .key-message {
+                font-size: clamp(0.7rem, 2vw, 1rem) !important;
+                padding: 4px 8px !important;
+                margin: 0 !important;
+            }
+            .hero-subtitle {
+                font-size: clamp(0.7rem, 2vw, 1rem) !important;
+                margin: 0 !important;
+            }
+            .btn-primary {
+                font-size: clamp(0.7rem, 1.8vw, 0.9rem) !important;
+                padding: 6px 12px !important;
+                margin: 0 !important;
             }
         }
         
@@ -2290,7 +2428,9 @@
         <section class="hero" id="hero" role="banner">
             <div id="hero-canvas" aria-hidden="true"></div>
             <div class="hero-content" style="gap: 50px !important;">
-                <h1 class="hero-title" style="margin: 0 !important;">Власний<br><span class="gradient-text">AI&#8209;АСИСТЕНТ</span><br>замість стандартних рішень</h1>
+                <h1 class="hero-title" style="margin: 0 !important;">Власний
+<span class="gradient-text">AI&#8209;АСИСТЕНТ</span>
+замість стандартних рішень</h1>
                 <p class="hero-subtitle" style="margin: 0 !important;">
                     <span class="key-message" style="margin: 0 !important;">Не адаптуйте процеси під AI — ми адаптуємо AI під ваші процеси.</span>
                     <br>
