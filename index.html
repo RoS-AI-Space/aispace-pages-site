@@ -1449,9 +1449,10 @@
             }
 
             .hero-title {
-                font-size: clamp(2.8rem, 5vw, 3.5rem) !important;
+                font-size: clamp(4.5rem, 8vw, 6.5rem) !important;
                 white-space: pre-line !important;
-                line-height: 1.2;
+                line-height: 1.1 !important;
+                text-align: center !important;
             }
 
             .key-message {
@@ -2157,13 +2158,100 @@
             }
         }
         
-        /* Mobile screens 400px+ - 3-line title */
+        /* Small screens (iPhone 5/SE) - slightly smaller title font */
+        @media (max-width: 399px) {
+            .hero-title {
+                font-size: clamp(2.0rem, 6vw, 2.8rem) !important;
+                white-space: pre-line !important;
+                line-height: 1.0 !important;
+                text-align: center !important;
+            }
+        }
+        
+        /* Mobile screens 400px+ - 5-line title */
         @media (min-width: 400px) and (max-width: 767px) {
             .hero-title {
-                font-size: clamp(2.2rem, 6vw, 3.5rem) !important;
+                font-size: clamp(3.5rem, 9vw, 5.8rem) !important;
                 white-space: pre-line !important;
+                line-height: 0.9 !important;
+                text-align: center !important;
+            }
+        }
+        
+        /* Portrait orientation - 3-line title */
+        @media (max-width: 767px) and (orientation: portrait) {
+            .hero-title {
+                white-space: pre-line !important;
+                font-size: clamp(2.0rem, 6vw, 2.8rem) !important;
+                line-height: 1.0 !important;
+                text-align: center !important;
+            }
+        }
+        
+        /* Landscape orientation - adaptive title (2-3 lines) */
+        @media (max-width: 767px) and (orientation: landscape) {
+            .hero-title {
+                font-size: clamp(2.5rem, 8vw, 4.5rem) !important;
+                white-space: normal !important;
                 line-height: 1.2 !important;
                 text-align: center !important;
+                max-width: 100% !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+        }
+        
+        /* POCO X6 and similar tall screens (1080x2400) - fix button visibility */
+        @media (max-width: 767px) and (min-height: 2400px) {
+            body {
+                padding-top: 80px !important;
+            }
+            
+            .hero {
+                padding-top: 20px !important;
+                padding-bottom: 30px !important;
+            }
+            
+            .btn-primary {
+                margin-bottom: 20px !important;
+                flex-shrink: 0 !important;
+            }
+        }
+        
+        /* Landscape mode - fix header overlap */
+        @media (max-width: 767px) and (orientation: landscape) {
+            body {
+                padding-top: 60px !important;
+            }
+            
+            .hero {
+                padding-top: 10px !important;
+                padding-bottom: 10px !important;
+            }
+            
+            .hero-title {
+                font-size: clamp(1.2rem, 3.5vw, 2rem) !important;
+                margin-top: 10px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .hero-content {
+                gap: 8px !important;
+            }
+            
+            .key-message {
+                font-size: clamp(0.8rem, 2.2vw, 1.1rem) !important;
+                padding: 8px 12px !important;
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.8rem, 2vw, 1rem) !important;
+            }
+            
+            .btn-primary {
+                font-size: clamp(0.8rem, 2vw, 1rem) !important;
+                padding: 8px 12px !important;
+                margin-bottom: 10px !important;
             }
         }
     </style>
@@ -2202,9 +2290,7 @@
         <section class="hero" id="hero" role="banner">
             <div id="hero-canvas" aria-hidden="true"></div>
             <div class="hero-content" style="gap: 50px !important;">
-                <h1 class="hero-title" style="margin: 0 !important;">Власний
-<span class="gradient-text">AI&#8209;АСИСТЕНТ</span>
-замість стандартних рішень</h1>
+                <h1 class="hero-title" style="margin: 0 !important;">Власний<br><span class="gradient-text">AI&#8209;АСИСТЕНТ</span><br>замість стандартних рішень</h1>
                 <p class="hero-subtitle" style="margin: 0 !important;">
                     <span class="key-message" style="margin: 0 !important;">Не адаптуйте процеси під AI — ми адаптуємо AI під ваші процеси.</span>
                     <br>
