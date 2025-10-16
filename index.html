@@ -195,6 +195,7 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            padding-top: 90px;
         }
 
         .container {
@@ -234,11 +235,13 @@
             width: 100%;
             padding: 24px 0;
             z-index: 1000;
+            background-color: rgba(10, 15, 30, 0.3);
+            backdrop-filter: blur(10px);
             transition: background-color 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
         }
 
         .header.scrolled {
-            background-color: rgba(10, 15, 30, 0.7);
+            background-color: rgba(10, 15, 30, 0.9);
             backdrop-filter: blur(20px);
             padding: 16px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1474,7 +1477,7 @@
         </section>
         
         <!-- UVP Section (Bento) -->
-        <section class="uvp" id="benefits">
+        <section class="uvp" id="benefits" data-nav="benefits">
             <div class="container">
                 <h2 class="section-title">Наша унікальна пропозиція</h2>
                 <div class="bento-grid">
@@ -1519,10 +1522,10 @@
         </section>
 
         <!-- Metrics Section -->
-        <section class="metrics" id="metrics">
+        <section class="metrics" id="metrics" data-nav="benefits">
             <div class="container">
                 <h2 class="section-title">Ключові метрики ефективності</h2>
-                <p class="metrics-subtitle">на прикладі аналізу уроків - 10 в день по 50-60 хв кожний</p>
+                <p class="metrics-subtitle">на прикладі аналізу уроків 30 днів - 10 в день по 50-60 хв кожний</p>
                 <div class="metrics-grid">
                     <div class="metric-card">
                         <h3 class="metric-title">Точність AI-аналізу</h3>
@@ -1559,7 +1562,7 @@
         </section>
 
         <!-- Solutions Section -->
-        <section class="solutions">
+        <section class="solutions" data-nav="benefits">
             <div class="container">
                 <h2 class="section-title">Два інструменти для розвитку вашої команди</h2>
                 <div class="solutions-grid">
@@ -1754,10 +1757,11 @@
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
+                    // Використовуємо data-nav атрибут якщо є, інакше ID
+                    const navId = entry.target.getAttribute('data-nav') || entry.target.getAttribute('id');
                     navLinks.forEach(link => {
                         link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${id}`) {
+                        if (link.getAttribute('href') === `#${navId}`) {
                             link.classList.add('active');
                         }
                     });
