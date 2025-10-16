@@ -463,12 +463,12 @@
 
         .key-message {
             color: #4FD1FF;
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-size: clamp(1rem, 3vw, 1.6rem);
             font-weight: 700;
             display: block;
             text-shadow: 0 0 20px rgba(79, 209, 255, 0.3);
             animation: keyMessagePulse 3s ease-in-out infinite;
-            padding: clamp(16px, 2.5vw, 24px) clamp(20px, 3vw, 32px);
+            padding: clamp(14px, 2.5vw, 22px) clamp(18px, 3vw, 28px);
             border-radius: 16px;
             background-color: rgba(79, 209, 255, 0.08);
             border: 2px solid rgba(79, 209, 255, 0.3);
@@ -477,6 +477,11 @@
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(79, 209, 255, 0.15);
             max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .key-message::before {
@@ -1350,7 +1355,7 @@
             }
         }
 
-        /* Mobile devices */
+        /* Mobile devices - All sizes with better space filling */
         @media (max-width: 767px) {
             body {
                 padding-top: 70px;
@@ -1359,16 +1364,90 @@
             .hero {
                 height: 100vh;
                 min-height: auto;
-                align-items: center;
+                align-items: flex-start;
                 padding-top: 0;
-                padding-bottom: 20px;
-            }
-            
-            .hero-content {
-                padding-top: clamp(15px, 6vh, 40px);
-                padding-bottom: clamp(15px, 6vh, 40px);
+                padding-bottom: 0;
             }
 
+            .hero-content {
+                height: calc(100vh - 70px);
+                padding-top: 0;
+                padding-bottom: 2px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 14px;
+            }
+
+            .hero-title {
+                margin-top: 18px;
+            }
+
+            .key-message {
+                margin: 8px 0;
+            }
+
+            .hero-subtitle {
+                margin: 8px 0;
+            }
+
+            .btn-primary {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                flex-shrink: 0;
+            }
+        }
+
+        /* Mobile devices - Very small screens (iPhone 5) */
+        @media (max-width: 360px) {
+            body {
+                padding-top: 50px;
+            }
+
+            .hero {
+                height: 100vh;
+                min-height: auto;
+                padding-bottom: 2px;
+            }
+
+            .hero-content {
+                height: calc(100vh - 52px);
+                gap: 8px;
+                padding-bottom: 2px;
+            }
+
+            .hero-title {
+                margin-top: 3px;
+                font-size: clamp(1rem, 3.2vw, 1.4rem);
+                max-width: 100%;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                word-break: keep-all;
+                padding: 0 1px;
+            }
+
+            .key-message {
+                margin: 3px 0;
+                font-size: clamp(0.75rem, 2.2vw, 0.95rem);
+                padding: 6px 10px;
+            }
+
+            .hero-subtitle {
+                margin: 3px 0;
+                font-size: clamp(0.75rem, 2vw, 0.9rem);
+            }
+
+            .btn-primary {
+                margin-top: 3px;
+                margin-bottom: 1px;
+                flex-shrink: 0;
+                font-size: clamp(0.75rem, 2vw, 0.85rem);
+                padding: 5px 10px;
+            }
+        }
+
+        /* Common mobile styles for all screen sizes */
+        @media (max-width: 767px) {
             section {
                 padding: 50px 0;
             }
@@ -1378,12 +1457,22 @@
             }
 
             .hero-content {
-                padding: 0 20px;
+                padding: 0 10px;
                 max-width: 100%;
+                width: 100%;
+                box-sizing: border-box;
             }
 
-            .hero-title { 
-                font-size: clamp(2.2rem, 5vw, 2.8rem);
+            .hero-title {
+                font-size: clamp(1.6rem, 4.8vw, 2.8rem);
+                white-space: pre-line;
+                line-height: 1.1;
+                text-align: center;
+                max-width: 100%;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                word-break: keep-all;
+                padding: 0 5px;
             }
             .hero-subtitle {
                 font-size: clamp(1.1rem, 2.5vw, 1.4rem);
@@ -1455,11 +1544,12 @@
             }
 
             .btn-primary {
-                font-size: clamp(1rem, 2.2vw, 1.2rem);
-                padding: clamp(14px, 2.2vw, 18px) clamp(18px, 2.8vw, 24px);
+                font-size: clamp(1rem, 3vw, 1.5rem);
+                padding: clamp(14px, 3vw, 20px) clamp(20px, 4vw, 32px);
                 max-width: 100%;
                 width: 100%;
                 box-sizing: border-box;
+                margin-bottom: 10px;
             }
             
             .cta-title { font-size: 1.3rem; }
@@ -1738,7 +1828,10 @@
         <section class="hero" id="hero" role="banner">
             <div id="hero-canvas" aria-hidden="true"></div>
             <div class="hero-content">
-                <h1 class="hero-title">Власний <span class="gradient-text">AI&#8209;АСИСТЕНТ</span> замість стандартних рішень</h1>
+                <h1 class="hero-title">Власний
+<span class="gradient-text">AI&#8209;АСИСТЕНТ</span>
+замість стандартних
+рішень</h1>
                 <p class="hero-subtitle">
                     <span class="key-message">Не адаптуйте процеси під AI — ми адаптуємо AI під ваші процеси.</span>
                     <br>
