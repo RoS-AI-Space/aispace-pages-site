@@ -583,6 +583,26 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
+        
+        /* На мобільних прибираємо боковий padding з key-message, оскільки контейнер вже має padding */
+        @media (max-width: 767px) {
+            .key-message {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            /* Переконаємося, що H3 має правильні відступи */
+            .section-title {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
 
         .key-message::before {
             content: '';
@@ -1707,7 +1727,7 @@
                 flex-direction: column !important;
                 align-items: center !important;
                 justify-content: center !important;
-                padding: 20px 8px 20px 8px !important;
+                padding: 20px 0 20px 0 !important;
                 box-sizing: border-box !important;
             }
 
@@ -1715,13 +1735,13 @@
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: center !important;
-                align-items: center !important;
+                align-items: stretch !important;
                 gap: clamp(15px, 3vh, 25px) !important;
                 max-width: 100% !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
                 flex: 1 !important;
-                padding-bottom: 10px !important;
+                padding: 0 20px 10px 20px !important;
             }
 
             .hero-title { 
@@ -1745,7 +1765,7 @@
                 overflow-wrap: break-word;
                 font-size: clamp(1.05rem, 2.8vw, 1.6rem);
                 line-height: 1.4;
-                padding: clamp(14px, 2.5vw, 20px) clamp(20px, 3vw, 28px);
+                padding: clamp(14px, 2.5vw, 20px) 0;
             }
             .hero-subtitle { 
                 margin: 0; 
@@ -1769,6 +1789,26 @@
                 flex-shrink: 0 !important;
                 display: block !important;
                 align-self: stretch !important;
+            }
+        }
+        
+        /* Вирівнюємо ширину кнопки CTA з картками "Для кого це?" на мобільних */
+        @media (max-width: 767px) {
+            .hero-content .btn-primary {
+                width: 100% !important;
+                max-width: 100% !important;
+                font-size: clamp(1.3rem, 3.5vw, 2rem) !important;
+                padding: clamp(18px, 3.5vw, 26px) clamp(24px, 4vw, 32px) !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* Переконаємося, що H3 має правильні відступи */
+            .section-title {
+                padding: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
             }
         }
 
@@ -2671,7 +2711,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#cta" class="btn btn-primary" aria-label="Дізнатися вартість впровадження AI-системи" style="font-size: clamp(0.8rem, 2.2vw, 1.8rem) !important; padding: clamp(10px, 1.8vw, 14px) clamp(14px, 2.2vw, 22px) !important; display: block !important; visibility: visible !important; white-space: nowrap !important;">Дізнатися вартість впровадження</a>
+                <a href="#cta" class="btn btn-primary" aria-label="Дізнатися вартість впровадження AI-системи">Дізнатися вартість впровадження</a>
             </div>
         </section>
 
