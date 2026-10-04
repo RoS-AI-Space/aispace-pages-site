@@ -1,11 +1,11 @@
 {
   "name": "AISPACE",
   "short_name": "AISPACE",
-  "description": "Власний AI-асистент замість стандартних рішень. Не адаптуйте процеси під AI — ми адаптуємо AI під ваші процеси.",
+  "description": "Від оренди до володіння: власна AI-система якості та безпеки комунікацій у вашому Google Cloud.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A0F1E",
-  "theme_color": "#00D4FF",
+  "background_color": "#060a13",
+  "theme_color": "#060a13",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

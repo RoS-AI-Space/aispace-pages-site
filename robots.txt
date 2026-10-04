@@ -1,18 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://aispace.com.ua/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 1
-
-# Disallow admin areas (if any)
-# Disallow: /admin/
-# Disallow: /private/
-
-# Allow all main content
-Allow: /css/
-Allow: /js/
-Allow: /images/
-Allow: /fonts/
