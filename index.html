@@ -44,7 +44,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://aispace.com">
+    <link rel="canonical" href="https://aispace.com.ua/">
     
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,13 +63,13 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "AISPACE",
-        "url": "https://aispace.com",
-        "logo": "https://aispace.com/logo.png",
+        "url": "https://aispace.com.ua/",
+        "logo": "https://aispace.com.ua/android-chrome-512x512.png",
         "description": "Не адаптуйте процеси під AI — ми адаптуємо AI під ваші процеси. Ваша власність на Google Cloud, ваші критерії, ваші дані.",
         "foundingDate": "2024",
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+380-XX-XXX-XX-XX",
+            "telephone": "+380633807686",
             "contactType": "customer service",
             "availableLanguage": "Ukrainian"
         },
@@ -2983,7 +2983,7 @@
                     <h4 class="footer-col__title">Контакти</h4>
                     <ul class="footer-nav">
                         <li><a href="mailto:aispace.integration@gmail.com" class="footer-link">aispace.integration@gmail.com</a></li>
-                        <li><a href="tel:+380991234567" class="footer-link">+38 (063) 380-76-86</a></li>
+                        <li><a href="tel:+380633807686" class="footer-link">+38 (063) 380-76-86</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -3068,11 +3068,39 @@
         
         // Замініть на URL вашого Google Apps Script веб-додатку
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNxNQlk2bR3En06WaIhVcsWWBjI0dEQ7LN5rjHuZWmaG6Banv9WjdbQJJXdUpP9uYI/exec';
-        
+
+        // Apps Script приймає телефон лише у форматі +XXXXXXXXXXX (10–15 цифр, без пробілів).
+        // Через mode: 'no-cors' відмову сервера не видно, тому формат гарантуємо тут.
+        const PHONE_REGEX = /^\+\d{10,15}$/;
+        function normalizePhone(raw) {
+            let value = String(raw || '').replace(/[^\d+]/g, '');
+            const hasPlus = value.startsWith('+');
+            value = value.replace(/\+/g, '');
+            if (!value) return '';
+            if (hasPlus) return '+' + value;
+            if (value.startsWith('380')) return '+' + value;
+            if (value.startsWith('80')) return '+3' + value;
+            if (value.startsWith('0')) return '+38' + value;
+            return '+' + value;
+        }
+
         if(contactForm) {
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                
+
+                // Нормалізуємо телефон і не відправляємо заявку, яку Apps Script відхилить
+                const phoneField = document.getElementById('phone');
+                const normalizedPhone = normalizePhone(phoneField.value);
+                phoneField.value = normalizedPhone;
+                if (!PHONE_REGEX.test(normalizedPhone)) {
+                    phoneField.style.borderColor = '#ff6b6b';
+                    phoneField.style.boxShadow = '0 0 0 2px rgba(255, 107, 107, 0.2)';
+                    phoneField.setCustomValidity('Вкажіть номер у форматі +380XXXXXXXXX');
+                    phoneField.reportValidity();
+                    phoneField.focus();
+                    return;
+                }
+
                 // Показуємо індикатор завантаження
                 const submitBtn = contactForm.querySelector('.btn-submit');
                 const originalText = submitBtn.textContent;
@@ -3083,7 +3111,7 @@
                     // Збираємо дані з форми
                     const formData = {
                         fullName: document.getElementById('name').value,
-                        phone: document.getElementById('phone').value,
+                        phone: normalizedPhone,
                         email: document.getElementById('email').value,
                         company: document.getElementById('company').value,
                         industry: document.getElementById('industry-input').value,
@@ -3157,6 +3185,7 @@
         const phoneInput = document.getElementById('phone');
         if (phoneInput) {
             phoneInput.addEventListener('input', function() {
+                this.setCustomValidity('');
                 let value = this.value;
                 
                 // Дозволяємо тільки цифри, +, пробіли, дужки та тире
@@ -3190,7 +3219,8 @@
             });
             
             phoneInput.addEventListener('blur', function() {
-                const phone = this.value.trim();
+                const phone = normalizePhone(this.value);
+                if (phone) this.value = phone;
                 
                 // Універсальна валідація телефону
                 // Дозволяємо формати: +380XXXXXXXXX, +1234567890, +44123456789 тощо

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://aispace.com/sitemap.xml
+Sitemap: https://aispace.com.ua/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1
