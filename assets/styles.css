@@ -4529,6 +4529,136 @@ select.input option {
 }
 
 
+/* =========================================================
+   Сторінка «Політика конфіденційності»
+   ========================================================= */
+.legal {
+  padding: clamp(120px, 14vw, 160px) 0 clamp(72px, 9vw, 110px);
+}
+
+.legal-wrap {
+  width: min(760px, 100% - var(--gutter) * 2);
+  margin-inline: auto;
+}
+
+.legal h1 {
+  margin: 20px 0 12px;
+  font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.2rem);
+  letter-spacing: -0.04em;
+}
+
+.legal-updated {
+  margin-bottom: 36px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--dim);
+}
+
+.legal h2 {
+  margin: 44px 0 12px;
+  font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.4rem);
+  letter-spacing: -0.02em;
+}
+
+.legal p,
+.legal li {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.legal p + p {
+  margin-top: 12px;
+}
+
+.legal ul {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+  padding-left: 1.25em;
+  list-style: disc;
+}
+
+.legal li::marker {
+  color: var(--cyan);
+}
+
+.legal strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.legal-wrap a:not(.btn):not(.link-arrow) {
+  color: var(--cyan);
+  border-bottom: 1px solid rgba(63, 216, 245, 0.35);
+  overflow-wrap: anywhere;
+  transition: border-color 0.2s;
+}
+
+.legal-wrap a:not(.btn):not(.link-arrow):hover {
+  border-color: var(--cyan);
+}
+
+.legal-summary {
+  padding: clamp(20px, 3vw, 28px);
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(63, 216, 245, 0.28);
+  background: linear-gradient(160deg, rgba(63, 216, 245, 0.08), rgba(63, 216, 245, 0.02));
+}
+
+.legal-summary h2 {
+  margin-top: 0;
+}
+
+.legal-summary li {
+  color: var(--text);
+}
+
+.legal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 26px;
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.legal + .footer {
+  padding-bottom: 34px;
+}
+
+.legal + .footer .footer-bottom {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.footer .footer-bottom a {
+  font-size: inherit;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.footer .footer-bottom a:hover {
+  color: var(--text-strong);
+}
+
+.form-note a {
+  color: var(--muted);
+  border-bottom: 1px solid var(--line-2);
+}
+
+.form-note a:hover {
+  color: var(--cyan);
+}
+
+@media (max-width: 560px) {
+  .legal-back {
+    display: none;
+  }
+}
+
 /* ---------- Зменшений рух ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
